@@ -49,9 +49,9 @@ public class Soportecontroller {
     @GetMapping("/hateoas/{id}")
     public ServicioDto obtenerHATEOAS(@PathVariable Integer id) {
         ServicioDto dto = soporteServicio.obtenerTicketPorId(id);
-        dto.add(Link.of("http://localhost:8888/api/proxy/productos/" + dto.getId()).withSelfRel());
-        dto.add(Link.of("http://localhost:8888/api/proxy/productos/" + dto.getId()).withRel("Modificar HATEOAS").withType("PUT"));
-        dto.add(Link.of("http://localhost:8888/api/proxy/productos/" + dto.getId()).withRel("Eliminar HATEOAS").withType("DELETE"));
+        dto.add(Link.of("http://localhost:8888/api/proxy/soporte/" + dto.getId()).withSelfRel());
+        dto.add(Link.of("http://localhost:8888/api/proxy/soporte/" + dto.getId()).withRel("Modificar HATEOAS").withType("PUT"));
+        dto.add(Link.of("http://localhost:8888/api/proxy/soporte/" + dto.getId()).withRel("Eliminar HATEOAS").withType("DELETE"));
 
         return dto;
     }
@@ -62,8 +62,8 @@ public class Soportecontroller {
 
         for (ServicioDto dto : lista) {
             
-            dto.add(Link.of("http://localhost:8888/api/proxy/productos").withRel("Get todos HATEOAS"));
-            dto.add(Link.of("http://localhost:8888/api/proxy/productos/" + dto.getId()).withRel("Crear HATEOAS").withType("POST"));
+            dto.add(Link.of("http://localhost:8888/api/proxy/soporte").withRel("Get todos HATEOAS"));
+            dto.add(Link.of("http://localhost:8888/api/proxy/soporte/" + dto.getId()).withRel("Crear HATEOAS").withType("POST"));
         }
 
         return lista;
